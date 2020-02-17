@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>Product Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css" />
+</head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-light bg-light">
+	  <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Search Products</span>
+       </div>
+            <input id="searchText" type="text" class="form-control" placeholder="By Name.." aria-label="Large"
+                aria-describedby="inputGroup-sizing-lg">
+        <br>        
+	</nav>
+
+
+<div align="center">
+    <h1>--Product List--</h1>
+    <br>
+    <div class="input-group mb-3 d-flex justify-content-center">
+        <a href="new" class="btn btn-outline-info btn-lg">Add New Product </a>
+    </div>
+    <br/>
+    <table border="1" cellpadding="10" class="table-hover">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Made In</th>
+                <th>Price (INR)</th>
+                <th>Action on Product</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+            	<td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.brand}">Brand</td>
+                <td th:text="${product.madein}">Made in</td>
+                <td th:text="${product.price}">Price</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${product.id}}" class="btn btn-outline-info btn-lg">Edit Product</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${product.id}}" class="btn btn-outline-danger btn-lg">Delete Product</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	
+	<!-- Footer -->
+	<footer class="page-footer font-large blue">
+	
+	  <!-- Copyright -->
+	  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+	    <a href="http://localhost:8009/">SpringBoot</a>
+	  </div>
+	  <!-- Copyright -->
+	
+	</footer>
+	<!-- Footer -->
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script>
+	var data = [];
+	$(document).ready(function () {
+        console.log("ready!");
+        $("#searchText").keyup(() => {
+            console.log('keyup event', $("#searchText").val())
+            var filteredList = data.filter((element)=> element.title.startsWith($("#searchText").val()))
+            console.log(filteredList)
+            $( "#display" ).empty();
+            render(filteredList);
+        })
+	</script>
+</body>
+</html>

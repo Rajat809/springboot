@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Product Manager/Edit-Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css" />
+</head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head>
+<body>
+	<div align="center">
+		<br>
+		<h1>--Edit Existing Product--</h1>
+		<br />
+		<form action="#" th:action="@{/save}" th:object="${product}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>				
+					<td class="text-primary font-weight-bold">Product ID:</td>
+					<td>
+						<input type="text" th:field="*{id}" readonly="readonly" />
+					</td>
+				</tr>			
+				<tr>				
+					<td class="text-primary font-weight-bold" placeholder="Name">Product Name:</td>
+					<td>
+						<input type="text"  th:field="*{name}" />
+					</td>
+				</tr>
+				<tr>
+					<td class="text-primary font-weight-bold" placeholder="Brand">Brand:</td>
+					<td><input type="text" th:field="*{brand}" /></td>
+				</tr>
+				<tr>
+					<td class="text-primary font-weight-bold" placeholder="Name">Made In:</td>
+					<td><input type="text" th:field="*{madein}" /></td>
+				</tr>
+				<tr>
+					<td class="text-primary font-weight-bold" placeholder="Price (INR)">Price (INR):</td>
+					<td><input type="text" th:field="*{price}" /></td>
+				</tr>								
+			</table>
+			<br>
+			<button type="submit" class="btn btn-outline-success btn-lg">Save Product</button></td>
+		</form>
+	</div>
+	
+	
+	<!-- Footer -->
+	<footer class="page-footer font-large blue">
+	
+	  <!-- Copyright -->
+	  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+	    <a href="http://localhost:8009/">SpringBoot</a>
+	  </div>
+	  <!-- Copyright -->
+	
+	</footer>
+	<!-- Footer -->
+</body>
+</html>
